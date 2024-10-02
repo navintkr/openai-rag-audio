@@ -1,7 +1,8 @@
 # RAG Audio: Pattern for RAG + Voice Using Azure AI Search and the GPT-4o Realtime API
 
 This repo helps implement RAG support in applications that use voice as their user interface, powered by the GPT-4o realtime API for audio. 
-![RTMTPattern](docs/RTMTPattern.png)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Gjsi_wXnSRQ/0.jpg)](https://www.youtube.com/watch?v=Gjsi_wXnSRQ)
 
 ### 1. Pre-requisites
 1. [Azure OpenAI](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesOpenAI), with 2 model deployments, one of the **gpt-4o-realtime-preview** model (Currently it's available in East US 2 and Sweden), and one for embeddings (text-embedding-ada-002)
@@ -9,14 +10,6 @@ This repo helps implement RAG support in applications that use voice as their us
 1. [Azure Blob Storage](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)
 
 ### 2. Creating an index
-RAG applications use a retrieval system to get the right grounding data for LLMs. We use Azure AI Search as our retrieval system, so we need to get our knowledge base (e.g. documents or any other content you want the app to be able to talk about) into an Azure AI Search index.
-
-**If you already have an Azure AI Search index**
-
-You can use an existing index directly. If you created that index using the "Import and vectorize data" option in the portal, no further changes are needed. Otherwise, you'll need to update the field names in the [code](https://github.com/navintkr/openai-rag-audio/blob/main/app/backend/ragtools.py) to match your text/vector fields.
-
-**Creating a new index with sample data or your own**
-
 Follow these steps to create a new index. We'll create a setup where once created, you can add, delete, or update your documents in blob storage and the index will automatically follow the changes.
 
 1. Upload your documents to an Azure Blob Storage container. An easy way to do this is using the Azure Portal: navigate to the container and use the upload option to move your content (e.g. PDFs, Office docs, etc.)
